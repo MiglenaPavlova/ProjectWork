@@ -23,7 +23,7 @@ public class StatisticsTest extends TestUtil {
 
     @Test(dataProvider = "company-data-file")
 
-    public void compareStatistics(String company, String price){
+    public void compareStatistics(String company, String dividend, String price){
 
         try
         {
@@ -38,7 +38,7 @@ public class StatisticsTest extends TestUtil {
         }
 
         StatisticsPage statisticsPage = new StatisticsPage(driver);
-        statisticsPage.checkStatistics(company);
+        statisticsPage.checkStatistics(company, dividend, price);
 
     }
 }
