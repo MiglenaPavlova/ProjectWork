@@ -12,7 +12,7 @@ public class StatisticsPage extends BasePage {
     @FindBy(id="result-quotes-0")
     private WebElement selectOption;
 
-    @FindBy(xpath ="td[@data-test='DIVIDEND_AND_YIELD-value']")
+    @FindBy(xpath ="//td[@data-test='DIVIDEND_AND_YIELD-value']")
     ////td[@data-test='DIVIDEND_AND_YIELD-value']
     ////span[text()='Forward Dividend & Yield']/../following-sibling::td
     private WebElement dividendPrice;
@@ -28,14 +28,14 @@ public class StatisticsPage extends BasePage {
         super(driver);
     }
 
-    public void checkStatistics(String company, String dividend, String price){
+    public void checkStatistics(String company){
         //executeOperationWithExplicitWait(10, ExpectedConditions.visibilityOf(username), 4);
 
         searchInput.sendKeys(company);
         selectOption.click();
-        dividendPrice.getText();
-        statisticsTab.click();
-        priceBook.getText();
+        //dividendPrice.getText();
+        //statisticsTab.click();
+       // priceBook.getText();
 
     }
 }
