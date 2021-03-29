@@ -12,16 +12,17 @@ public class StatisticsPage extends BasePage {
     @FindBy(id="result-quotes-0")
     private WebElement selectOption;
 
+    /*
     @FindBy(xpath ="//td[@data-test='DIVIDEND_AND_YIELD-value']")
-    ////td[@data-test='DIVIDEND_AND_YIELD-value']
-    ////span[text()='Forward Dividend & Yield']/../following-sibling::td
     private WebElement dividendPrice;
 
     @FindBy(xpath ="//*[@data-test='STATISTICS']")
     private WebElement statisticsTab;
 
+
     @FindBy(xpath = "//span[text()='Price/Book']/../following-sibling::td")
     private WebElement priceBook;
+    */
 
 
     public StatisticsPage(WebDriver driver) {

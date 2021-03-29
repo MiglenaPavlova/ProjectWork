@@ -59,7 +59,7 @@ public class LoginTest extends TestUtil {
             softAssert.assertEquals(bithDayErroroMessage, "That doesn’t look right, please re-enter your birthday.");
 
             softAssert.assertAll();
-            driver.navigate().to(url);
+            //driver.navigate().to(url);
 
 
     }
