@@ -1,7 +1,7 @@
 package com.yahoo.finance.test.project.base;
 
 import driver.DriverOpenBrowser;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -38,6 +38,7 @@ public class TestUtil {
         readParametersFromFile();
         setupBrowserDriver();
         loadUrl();
+        checkCookiesPopup();
     }
 
     private void loadUrl(){
@@ -70,6 +71,21 @@ public class TestUtil {
                 System.out.println("Browser is not correct");
         }
     }
+
+    private void checkCookiesPopup(){
+        try
+        {
+
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            WebElement agreeButton = driver.findElement(By.cssSelector("[value=agree]"));
+            js.executeScript("arguments[0].scrollIntoView();", agreeButton);
+            agreeButton.click();
+
+        }catch (NoSuchElementException e){
+            e.printStackTrace();
+        }
+    }
+
 
     @AfterMethod
     public void tearDown(){

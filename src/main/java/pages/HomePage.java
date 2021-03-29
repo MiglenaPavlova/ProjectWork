@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class MainPage extends BasePage{
+public class HomePage extends BasePage{
 
     @FindBy(id="header-signin-link")
     private WebElement signInButton;
@@ -12,7 +12,7 @@ public class MainPage extends BasePage{
     @FindBy(id="createacc")
     private WebElement createAccountButton;
 
-    public MainPage(WebDriver driver) {
+    public HomePage(WebDriver driver) {
         super(driver);
     }
 
