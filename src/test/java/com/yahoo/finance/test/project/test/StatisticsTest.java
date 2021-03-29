@@ -45,13 +45,13 @@ public class StatisticsTest extends TestUtil {
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[@data-test='DIVIDEND_AND_YIELD-value']")));
-        String dividendCheck = driver.findElement(By.xpath("//td[@data-test='DIVIDEND_AND_YIELD-value']")).getText();
         driver.manage().timeouts().implicitlyWait(implicitWait, TimeUnit.SECONDS);
-        //System.out.println(dividendCheck);
+
+        String dividendCheck = driver.findElement(By.xpath("//td[@data-test='DIVIDEND_AND_YIELD-value']")).getText();
+
         //compares the Dividend
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(dividendCheck, dividend);
-
 
         WebElement statisticsTab = driver.findElement(By.xpath("//*[@data-test='STATISTICS']"));
         statisticsTab.click();
@@ -59,8 +59,10 @@ public class StatisticsTest extends TestUtil {
         ////waits for element "Price/Book (mrq)" to be present
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Price/Book']/../following-sibling::td")));
-        String priceCheck = driver.findElement(By.xpath("//span[text()='Price/Book']/../following-sibling::td")).getText();
         driver.manage().timeouts().implicitlyWait(implicitWait, TimeUnit.SECONDS);
+
+        String priceCheck = driver.findElement(By.xpath("//span[text()='Price/Book']/../following-sibling::td")).getText();
+
         //compares the Price
         softAssert.assertEquals(priceCheck, price);
 

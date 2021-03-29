@@ -34,7 +34,6 @@ public class TestUtil {
  */
 
     @BeforeMethod
-
     public void setUp(){
         readParametersFromFile();
         setupBrowserDriver();
@@ -60,7 +59,6 @@ public class TestUtil {
     }
 
     private void  setupBrowserDriver() {
-
         switch (browser) {
             case "firefox":
                 driver = DriverOpenBrowser.getFirefoxDriver(implicitWait);
