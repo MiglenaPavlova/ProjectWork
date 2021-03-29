@@ -29,13 +29,8 @@ public class StatisticsPage extends BasePage {
     }
 
     public void checkStatistics(String company){
-        //executeOperationWithExplicitWait(10, ExpectedConditions.visibilityOf(username), 4);
-
         searchInput.sendKeys(company);
         selectOption.click();
-        //dividendPrice.getText();
-        //statisticsTab.click();
-       // priceBook.getText();
 
     }
 }

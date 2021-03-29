@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Test Suite" parallel="classes" thread-count="2">
+    <test name="Test Automation Project Work">
+        <packages>
+            <package name="com.yahoo.finance.test.project.test"/>
+        </packages>
+    </test>
+</suite>

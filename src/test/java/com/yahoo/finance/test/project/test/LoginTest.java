@@ -24,8 +24,8 @@ public class LoginTest extends TestUtil {
 
 
     @Test(dataProvider = "login-data-file")
-    public void executeSimpleTest(String firstName,String lastName, String email, String password, String phoneNumber,
-                                  String birthMont, String day, String year) {
+    public void loginSimpleTest(String firstName, String lastName, String email, String password, String phoneNumber,
+                                String birthMont, String day, String year) {
 
         try
         {

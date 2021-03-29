@@ -33,15 +33,12 @@ public class LoginPage extends BasePage{
     @FindBy(id="reg-submit-button")
     private WebElement submitButton;
 
-       //constructor създава всички елементи
-
     public LoginPage(WebDriver driver){
         super(driver);
     }
 
     public void login(String firstName, String lastName, String email, String password, String phoneNumber,
                       String birthMont, String day, String year){
-        //executeOperationWithExplicitWait(10, ExpectedConditions.visibilityOf(username), 4);
 
         firstNameInput.sendKeys(firstName);
         lastNameInput.sendKeys(lastName);

@@ -9,11 +9,8 @@ public class MainPage extends BasePage{
     @FindBy(id="header-signin-link")
     private WebElement signInButton;
 
-    //signInButton.click();
-
     @FindBy(id="createacc")
     private WebElement createAccountButton;
-
 
     public MainPage(WebDriver driver) {
         super(driver);

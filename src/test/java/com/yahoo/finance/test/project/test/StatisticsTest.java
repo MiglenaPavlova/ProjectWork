@@ -6,7 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-import org.testng.Reporter;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -14,6 +15,7 @@ import pages.StatisticsPage;
 import utils.CsvReader;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class StatisticsTest extends TestUtil {
 
@@ -22,9 +24,7 @@ public class StatisticsTest extends TestUtil {
         return CsvReader.readCsvFile("src/test/resources/company.csv");
     }
 
-
     @Test(dataProvider = "company-data-file")
-
     public void compareStatistics(String company, String dividend, String price){
 
         try
@@ -40,28 +40,31 @@ public class StatisticsTest extends TestUtil {
 
         StatisticsPage statisticsPage = new StatisticsPage(driver);
         statisticsPage.checkStatistics(company);
-        dividend.toString();
-        price.toString();
 
-        //JavascriptExecutor js = (JavascriptExecutor) driver;
-        //WebElement tableDividendValue = driver.findElement(By.xpath("//td[@data-test='DIVIDEND_AND_YIELD-value']"));
-        //js.executeScript("arguments[0].scrollIntoView();", tableDividendValue);
-
+        //waits for element "Forward Dividend & Yield" to be present
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[@data-test='DIVIDEND_AND_YIELD-value']")));
         String dividendCheck = driver.findElement(By.xpath("//td[@data-test='DIVIDEND_AND_YIELD-value']")).getText();
+        driver.manage().timeouts().implicitlyWait(implicitWait, TimeUnit.SECONDS);
         //System.out.println(dividendCheck);
+        //compares the Dividend
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(dividendCheck, dividend);
-        Reporter.log("Amazon dividend check passed");
+
+
         WebElement statisticsTab = driver.findElement(By.xpath("//*[@data-test='STATISTICS']"));
-        //  //a[@href='/quote/AMZN/key-statistics?p=AMZN']
         statisticsTab.click();
 
+        ////waits for element "Price/Book (mrq)" to be present
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Price/Book']/../following-sibling::td")));
         String priceCheck = driver.findElement(By.xpath("//span[text()='Price/Book']/../following-sibling::td")).getText();
+        driver.manage().timeouts().implicitlyWait(implicitWait, TimeUnit.SECONDS);
+        //compares the Price
         softAssert.assertEquals(priceCheck, price);
-        Reporter.log("Amazon price check passed");
 
         softAssert.assertAll();
-
 
     }
 }
