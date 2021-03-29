@@ -89,7 +89,9 @@ public class TestUtil {
 
     @AfterMethod
     public void tearDown(){
-        driver.quit();
+        if (driver != null){
+            driver.quit();
+        }
     }
 
 }
