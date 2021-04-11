@@ -22,15 +22,12 @@ public class StatisticsTest extends TestUtil {
 
         DividendPage dividendPage = new DividendPage(driver);
         dividendPage.enterCompanyInSearchInput(company);
-        dividendPage.waitForResult(6);
         dividendPage.clickTheResult();
-        dividendPage.getDividend();
-        dividendPage.openStatisticsTab();
-        dividendPage.getPrice();
 
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(dividendPage.dividendCheck, dividend);
-        softAssert.assertEquals(dividendPage.priceCheck, price);
+        softAssert.assertEquals(dividendPage.getDividend(), dividend);
+        dividendPage.openStatisticsTab();
+        softAssert.assertEquals(dividendPage.getPrice(), price);
         softAssert.assertAll();
 
     }

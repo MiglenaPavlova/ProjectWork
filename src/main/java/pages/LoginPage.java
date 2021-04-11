@@ -73,22 +73,4 @@ public class LoginPage extends BasePage {
         submitButton.click();
     }
 
-
-    /*public void login(String lastName, String email, String password, String phoneNumber,
-                      String birthMont, String day, String year) {
-
-        //firstNameInput.sendKeys(firstName);
-        lastNameInput.sendKeys(lastName);
-        emailInput.sendKeys(email);
-        passwordInput.sendKeys(password);
-        phoneInput.sendKeys(phoneNumber);
-        monthInput.sendKeys(birthMont);
-        dayInput.sendKeys(day);
-        yearInput.sendKeys(year);
-        submitButton.click();
-
-    }
-
-     */
-
 }

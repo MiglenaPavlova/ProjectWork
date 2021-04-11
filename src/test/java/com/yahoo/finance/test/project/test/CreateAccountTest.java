@@ -38,7 +38,6 @@ public class CreateAccountTest extends TestUtil {
         loginPage.clickSubmitButton();
 
         ErrorMessages errorMessages = new ErrorMessages(driver);
-        errorMessages.waitForErrorMessage(6);
 
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(errorMessages.getEmailErrorMessage(), "This email address is not available for sign up, try something else");

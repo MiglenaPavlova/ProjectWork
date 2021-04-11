@@ -1,21 +1,18 @@
 package pages;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
 
 public class DividendPage extends BasePage {
 
-    public String dividendCheck;
-    public String priceCheck;
+    public String dividendToCheck;
+    public String priceToCheck;
     public WebElement textValueOfTheElement;
-    private static final String XPATH_lINK_DIVIDEND = "//td[@data-test='DIVIDEND_AND_YIELD-value']";
-    private static final String XPATH_lINK_PRICE_BOOK = "//span[text()='Price/Book']/../following-sibling::td";
+    //private static final String XPATH_lINK_DIVIDEND = "//td[@data-test='DIVIDEND_AND_YIELD-value']";
+    //private static final String XPATH_lINK_PRICE_BOOK = "//span[text()='Price/Book']/../following-sibling::td";
 
     @FindBy(id = "yfin-usr-qry")
     private WebElement searchInput;
@@ -31,6 +28,9 @@ public class DividendPage extends BasePage {
     @FindBy(xpath = "//td[@data-test='DIVIDEND_AND_YIELD-value']")
     public WebElement dividendField;
 
+    @FindBy(xpath = "//span[text()='Price/Book']/../following-sibling::td")
+    public WebElement priceBookField;
+
     public DividendPage(WebDriver driver) {
         super(driver);
     }
@@ -40,13 +40,14 @@ public class DividendPage extends BasePage {
     }
 
     public void clickTheResult() {
+        waitForElement(10, selectOption, 6);
         selectOption.click();
     }
 
     public String getDividend() {
-        waitForElement(XPATH_lINK_DIVIDEND, 6);
-        dividendCheck = driver.findElement(By.xpath(XPATH_lINK_DIVIDEND)).getText();
-        return dividendCheck;
+        waitForElement(10, dividendField, 6);
+        return dividendField.getText();
+
     }
 
     public void openStatisticsTab() {
@@ -54,16 +55,9 @@ public class DividendPage extends BasePage {
     }
 
     public String getPrice() {
-        waitForElement(XPATH_lINK_PRICE_BOOK, 6);
-        priceCheck = driver.findElement(By.xpath(XPATH_lINK_PRICE_BOOK)).getText();
-        return priceCheck;
+        waitForElement(10, priceBookField, 6);
+        return priceBookField.getText();
     }
 
-    public void waitForResult(int implicitWait) {
-        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("result-quotes-0")));
-        driver.manage().timeouts().implicitlyWait(implicitWait, TimeUnit.SECONDS);
-    }
 
 }
