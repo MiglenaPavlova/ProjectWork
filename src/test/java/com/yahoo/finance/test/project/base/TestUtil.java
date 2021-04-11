@@ -34,32 +34,31 @@ public class TestUtil {
  */
 
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
         readParametersFromFile();
         setupBrowserDriver();
         loadUrl();
         checkCookiesPopup();
     }
 
-    private void loadUrl(){
+    private void loadUrl() {
         driver.get(url);
     }
 
-    private void readParametersFromFile(){
-        try (FileInputStream configFile = new FileInputStream("src/test/resources/config.properties"))
-        {
+    private void readParametersFromFile() {
+        try (FileInputStream configFile = new FileInputStream("src/test/resources/config.properties")) {
             Properties config = new Properties();
             config.load(configFile);
             url = config.getProperty("urlAddress");
             implicitWait = Integer.parseInt(config.getProperty("implicitlyWait"));
             browser = config.getProperty("browser");
 
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void  setupBrowserDriver() {
+    private void setupBrowserDriver() {
         switch (browser) {
             case "firefox":
                 driver = DriverOpenBrowser.getFirefoxDriver(implicitWait);
@@ -72,24 +71,23 @@ public class TestUtil {
         }
     }
 
-    private void checkCookiesPopup(){
-        try
-        {
+    private void checkCookiesPopup() {
+        try {
 
             JavascriptExecutor js = (JavascriptExecutor) driver;
             WebElement agreeButton = driver.findElement(By.cssSelector("[value=agree]"));
             js.executeScript("arguments[0].scrollIntoView();", agreeButton);
             agreeButton.click();
 
-        }catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             e.printStackTrace();
         }
     }
 
 
     @AfterMethod
-    public void tearDown(){
-        if (driver != null){
+    public void tearDown() {
+        if (driver != null) {
             driver.quit();
         }
     }

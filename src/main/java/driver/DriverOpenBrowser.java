@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class DriverOpenBrowser {
     private static final String IGNORE_CERTIFICATE = "--IGNORE-CERTIFICATE-ERRORS";
 
-    public static WebDriver getFirefoxDriver(int wait){
+    public static WebDriver getFirefoxDriver(int wait) {
         FirefoxOptions options = new FirefoxOptions();
         options.addArguments(IGNORE_CERTIFICATE);
 
@@ -23,7 +23,7 @@ public class DriverOpenBrowser {
 
     }
 
-    public static WebDriver getChromeDriver(int wait){
+    public static WebDriver getChromeDriver(int wait) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments(IGNORE_CERTIFICATE);
 
