@@ -2,6 +2,7 @@ package com.yahoo.finance.test.project.test;
 
 import com.opencsv.exceptions.CsvException;
 import com.yahoo.finance.test.project.base.TestUtil;
+import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -24,7 +25,8 @@ public class CreateAccountTest extends TestUtil {
                                   String birthMont, String day, String year) {
 
         HomePage homePage = new HomePage(driver);
-        homePage.signIn();
+        homePage.clickSighInButton();
+        homePage.clickCreateAccountButton();
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterFirstName(firstName);
@@ -41,9 +43,13 @@ public class CreateAccountTest extends TestUtil {
 
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(errorMessages.getEmailErrorMessage(), "This email address is not available for sign up, try something else");
+        Reporter.log("Error message for email is checked. ");
         softAssert.assertEquals(errorMessages.getPasswordErrorMessage(), "Your password isn’t strong enough, try making it longer.");
+        Reporter.log("Error message for password is checked. ");
         softAssert.assertEquals(errorMessages.getPhoneErrorMessage(), "That doesn’t look right, please re-enter your phone number.");
+        Reporter.log("Error message for phone number is checked. ");
         softAssert.assertEquals(errorMessages.getBirthDayErrorMessage(), "That doesn’t look right, please re-enter your birthday.");
+        Reporter.log("Error message for the date is checked. ");
 
         softAssert.assertAll();
 

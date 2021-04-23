@@ -36,7 +36,7 @@ public class ErrorMessages extends BasePage {
     }
 
     public String getBirthDayErrorMessage() {
-        waitForElement(10, elementBirthDateError, 6);
+        waitForElement(15, elementBirthDateError);
         return elementBirthDateError.getText();
     }
 

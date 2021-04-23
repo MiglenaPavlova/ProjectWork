@@ -16,8 +16,12 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-    public void signIn() {
+    public void clickSighInButton() {
         signInButton.click();
+    }
+
+    public void clickCreateAccountButton() {
         createAccountButton.click();
     }
+
 }
