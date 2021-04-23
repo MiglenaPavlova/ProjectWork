@@ -40,12 +40,12 @@ public class DividendPage extends BasePage {
     }
 
     public void clickTheResult() {
-        waitForElement(10, selectOption);
+        waitForElement(15, selectOption);
         selectOption.click();
     }
 
     public String getDividend() {
-        waitForElement(10, dividendField);
+        waitForElement(15, dividendField);
         return dividendField.getText();
 
     }
@@ -55,7 +55,7 @@ public class DividendPage extends BasePage {
     }
 
     public String getPrice() {
-        waitForElement(10, priceBookField);
+        waitForElement(15, priceBookField);
         return priceBookField.getText();
     }
 
