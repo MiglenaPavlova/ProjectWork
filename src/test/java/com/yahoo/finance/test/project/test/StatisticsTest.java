@@ -18,6 +18,8 @@ public class StatisticsTest extends TestUtil {
         return CsvReader.readCsvFile("src/test/resources/company.csv");
     }
 
+
+
     @Test(dataProvider = "company-data-file")
     public void compareStatistics(String company, String dividend, String price) {
 
