@@ -37,7 +37,9 @@ public class CreateAccountTest extends TestUtil {
         loginPage.enterBirthMonth(birthMont);
         loginPage.enterDay(day);
         loginPage.enterYear(year);
-        loginPage.clickSubmitButton();
+        loginPage.clickGenderInput();
+        //the change is made only to show the comparison of errors, gender field is not obligatory to fill in.
+        //loginPage.clickSubmitButton();
 
         ErrorMessages errorMessages = new ErrorMessages(driver);
 

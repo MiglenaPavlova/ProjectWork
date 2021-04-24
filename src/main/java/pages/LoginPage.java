@@ -30,8 +30,12 @@ public class LoginPage extends BasePage {
     @FindBy(id = "usernamereg-year")
     private WebElement yearInput;
 
-    @FindBy(id = "reg-submit-button")
-    private WebElement submitButton;
+    // @FindBy(id = "reg-submit-button")
+    // private WebElement submitButton;
+
+
+    @FindBy(id = "usernamereg-freeformGender")
+    private WebElement genderInput;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -69,8 +73,13 @@ public class LoginPage extends BasePage {
         yearInput.sendKeys(year);
     }
 
-    public void clickSubmitButton() {
+   /* public void clickSubmitButton() {
         submitButton.click();
+    }
+    */
+
+    public void clickGenderInput() {
+        genderInput.click();
     }
 
 }

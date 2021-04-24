@@ -15,24 +15,8 @@ public class TestUtil {
     public String url;
     public int implicitWait;
     private String browser;
-/*
-    @BeforeSuite
-    public void readConfigProperties(){
-        try (FileInputStream configFile = new FileInputStream("src/test/resources/config.properties"))
-        {
-            Properties config = new Properties();
-            config.load(configFile);
-            url = config.getProperty("urlAddress");
-            implicitWait = Integer.parseInt(config.getProperty("implicitlyWait"));
-            browser = config.getProperty("browser");
 
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
- */
-
+    //@BeforeSuite
     @BeforeMethod
     public void setUp() {
         readParametersFromFile();
